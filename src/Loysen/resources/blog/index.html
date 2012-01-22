@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if latest_post_list %}
+	    <ul>
+	    {% for post in latest_post_list %}
+	    	<li>
+	    		<div class="blog-post">
+			    	<div class="contentTitle">
+			    		<a href="/blog/{{ post.id }}/">{{ post.subject }}</a>
+			    	</div>
+			    	<div class="contentText">
+			    		<span>{{ post.article}}</span>
+			    		{% if post.comment_set.all|length > 0 %}
+			    			<a href="/blog/{{ post.id }}/" >Comments: {{post.comment_set.all|length}}</a>
+			    		{% else %}
+			    			<a href="/blog/{{ post.id }}/" >Make a comment</a>
+			    		{% endif %}
+			    	</div>
+		    	</div>
+	    	</li>	
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No post are available.</p>
+	{% endif %}
+{% endblock content %}
