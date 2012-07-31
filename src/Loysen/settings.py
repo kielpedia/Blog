@@ -1,7 +1,11 @@
 # Django settings for Loysen project.
 
+import os
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -12,7 +16,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'C:\\work\\workspaces\\Django\\Loysen\\src\\sqlite.db', # Or path to database file if using sqlite3.
+        'NAME': '/home/kielpedia/projects/Blog/src/sqlite.db', # Or path to database file if using sqlite3.
         'USER': '', # Not used with sqlite3.
         'PASSWORD': '', # Not used with sqlite3.
         'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
@@ -64,10 +68,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    'C:/work/workspaces/Django/Loysen/src/Loysen/static',
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    '%s/static' % BASE_PATH,
 )
 
 # List of finder classes that know how to find static files in
@@ -101,10 +102,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'Loysen.urls'
 
 TEMPLATE_DIRS = (
-    'C:/work/workspaces/Django/Loysen/src/Loysen/resources',
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    '%s/resources' % BASE_PATH 
 )
 
 INSTALLED_APPS = (
