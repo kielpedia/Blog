@@ -5,11 +5,11 @@
 	    <ul>
 	    {% for post in latest_post_list %}
 	    	<li>
-	    		<div class="blog-post">
-			    	<div class="contentTitle">
+	    		<div class="row span6">
+			    	<div class="row ">
 			    		<a href="/blog/{{ post.id }}/">{{ post.subject }}</a>
 			    	</div>
-			    	<div class="contentText">
+			    	<div class="row">
 			    		<span>{{ post.article}}</span>
 			    		{% if post.comment_set.all|length > 0 %}
 			    			<a href="/blog/{{ post.id }}/" >Comments: {{post.comment_set.all|length}}</a>
