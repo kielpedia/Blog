@@ -1,3 +1,70 @@
 {% extends "base.html" %}
 
-{% block content %}{% endblock %}
+{% block hero %}
+{% endblock hero %}
+
+{% block content %}
+<div class='card-list'>
+	<div class='row'>
+		<div class='span5 offset1 card'>
+			<h3 class='card-title'>
+				<a href="/about" >About Me</a>
+			</h3>
+			<p class='card-content'>
+			Ut quis mauris sed eros pulvinar consequat et id leo. Ut quis condimentum lectus. Donec mattis dui non tellus dapibus pellentesque. Maecenas aliquet ultricies nisl quis lacinia. Cras purus dolor, ultricies id laoreet ac, fringilla ut tellus.<br><br>
+			Mauris tincidunt fringilla purus facilisis consectetur. Nullam bibendum lectus quis sapien egestas bibendum. Aenean augue erat, lobortis non laoreet eget, tempus vitae dui. Curabitur vitae risus elit. Nunc blandit interdum interdum. Nulla ut nulla neque. Aenean convallis lobortis metus, ac tincidunt felis lobortis eu.
+			</p>
+		</div>
+
+		<div class='span5 offset1 card'>
+			<h3 class='card-title'>
+				<a href='/blog'>Recent posts</a>
+			</h3>
+			<div class='card-content'>
+				{% if latest_post_list %}
+				<div class='blog'>
+					<ul class='card-list'>
+						{% for post in latest_post_list %}
+						<li>
+						<div class='row card'>
+							<div class="row card-title">
+								<h2>
+									<a href="/blog/{{ post.id }}/">{{ post.subject }}</a>
+								</h2>	
+							</div>
+						</div>
+						</li>	
+						{% endfor %}
+					</ul>
+				</div>
+				{% else %}
+				<p>No post are available.</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	<div class='row'>
+		<div class='span5 offset1 card'>
+			<h3 class='card-title'>Pictures</h3>
+			<p class='card-content'>
+			Ut quis mauris sed eros pulvinar consequat et id leo. Ut quis condimentum lectus. Donec mattis dui non tellus dapibus pellentesque. Maecenas aliquet ultricies nisl quis lacinia. Cras purus dolor, ultricies id laoreet ac, fringilla ut tellus.<br><br>
+			Mauris tincidunt fringilla purus facilisis consectetur. Nullam bibendum lectus quis sapien egestas bibendum. Aenean augue erat, lobortis non laoreet eget, tempus vitae dui. Curabitur vitae risus elit. Nunc blandit interdum interdum. Nulla ut nulla neque. Aenean convallis lobortis metus, ac tincidunt felis lobortis eu.
+			</p>
+		</div>
+
+		<div class='span5 offset1 card'>
+			<h3 class='card-title'>
+				<a href='http://twitter.com/kielpedia' target='_blank'>@kielpedia</a>
+			</h3>
+			<ul class='card-content'>
+				<li>first post </li>
+				<li>first post </li>
+				<li>first post </li>
+				<li>first post </li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}
