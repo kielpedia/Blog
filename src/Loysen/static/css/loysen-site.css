@@ -3,6 +3,7 @@
 }
 
 .card {
+	padding: 1em;
 }
 
 .card-title {
@@ -13,7 +14,7 @@
 }
 
 .card-footer {
-	float: right;
+	font-size: 8pt;
 }
 
 .card-title a,.card-footer a {

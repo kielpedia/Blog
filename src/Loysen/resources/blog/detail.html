@@ -1,23 +1,36 @@
 {% extends "base.html" %}
 
-{% block content %}
-<div class="contentTitle">
-<h1>{{ post.subject }}</h1>
-</div>
+{% block styles %}
+	<link rel='stylesheet' type='text/css' href='/static/css/blog.css' />	
+{% endblock styles %}
 
-<div class="contentText">
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	
-	{{ post.article|safe }}
-	
-	{% for comment in post.comment_set.all %}
-	    	<li>
-		    	<div class="contentTitle">
-		    	</div>
-		    	<div class="contentText">
-					{{comment.text}}
-		    	</div>
-	    	</li>	
-	{% endfor %}
+{% block content %}
+<div class='blog row'>
+	<div class='card span10 offset1'>
+		<div class="card-title">
+			<h1>{{ post.subject }}</h1>
+		</div>
+
+		<div class="card-content">
+			{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+			
+			{{ post.article|safe }}
+		</div>
+		<div class='comment'>
+			<h3>Comments</h3>
+			<ul class='card-list'>
+				{% for comment in post.comment_set.all %}
+					    <li class='card'>
+					    	<hr align='center' width='10%' size='1'>
+						   	<div class="card-title">
+						   	</div>
+						   	<div class="card-content">
+								{{comment.text}}
+						   	</div>
+					    </li>	
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
 </div>
 {% endblock content %}

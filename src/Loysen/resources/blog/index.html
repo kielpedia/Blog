@@ -6,29 +6,29 @@
 {% block content %}
 {% if latest_post_list %}
 <div class='blog'>
-	<ul class='card-list span12 offset1'>
+	<div class='card-list'>
 		{% for post in latest_post_list %}
-		<li>
-		<div class='row span9 card'>
-			<div class="row card-title">
-				<h2>
-					<a href="/blog/{{ post.id }}/">{{ post.subject }}</a>
-				</h2>	
-			</div>
-			<div class="row card-content">
-				<p>{{ post.article}}</p>
-			</div>
-			<div class="row card-footer">
-				{% if post.comment_set.all|length > 0 %}
-				<a href="/blog/{{ post.id }}/" >Comments: {{post.comment_set.all|length}}</a>
-				{% else %}
-				<a href="/blog/{{ post.id }}/" >Make a comment</a>
-				{% endif %}
-			</div>
-		</div>
-		</li>	
+			<div class='row'>
+				<div class='span10 offset1 card'>
+					<div class="card-title">
+						<h2>
+							<a href="/blog/{{ post.id }}/">{{ post.subject }}</a>
+						</h2>	
+					</div>
+					<div class="card-content">
+						<p>{{ post.article|safe|escape}}</p>
+					</div>
+					<div class="card-footer pull-right">
+						{% if post.comment_set.all|length > 0 %}
+						<a href="/blog/{{ post.id }}/" >Comments: {{post.comment_set.all|length}}</a>
+						{% else %}
+						<a href="/blog/{{ post.id }}/" >Make a comment</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>	
 		{% endfor %}
-	</ul>
+	</div>
 </div>
 {% else %}
 <p>No post are available.</p>

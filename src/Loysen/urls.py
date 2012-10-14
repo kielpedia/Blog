@@ -8,8 +8,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    (r'^$', direct_to_template, {'template': 'index.html'}),
-    (r'^aboutme$', direct_to_template, {'template': 'aboutme.html'}),
+    (r'^$', 'views.index'),
+    (r'^about$', direct_to_template, {'template': 'about.html'}),
     (r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     # url(r'^$', 'Loysen.views.home', name='home'),
