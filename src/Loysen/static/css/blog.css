@@ -7,9 +7,9 @@
 }
 
 .comment hr {
-	border-color: #000000;
+	border-color: #8F8F8F;
 	width: 50%;
 	text-align: center;
 	margin: auto;
-
+	margin-bottom: 1em;
 }

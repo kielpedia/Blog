@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class='blog row'>
-	<div class='card span10 offset1'>
+	<div class='card span8 offset2'>
 		<div class="card-title">
 			<h1>{{ post.subject }}</h1>
 		</div>
@@ -17,18 +17,35 @@
 			{{ post.article|safe }}
 		</div>
 		<div class='comment'>
-			<h3>Comments</h3>
+			<h4>Comments</h4>
 			<ul class='card-list'>
 				{% for comment in post.comment_set.all %}
-					    <li class='card'>
-					    	<hr align='center' width='10%' size='1'>
-						   	<div class="card-title">
-						   	</div>
-						   	<div class="card-content">
-								{{comment.text}}
+					{% if not forloop.first %}
+						<hr align='center' width='10%' size='1'>
+					{% endif %}
+					   <li class='row'>
+					    	<div class='card span8'>
+							   	<div class="card-title">
+							   		<h5>{{comment.subject}}</h5>
+							   	</div>
+							   	<div class="card-content">
+									{{comment.text|safe|escape}}
+							   	</div>
+							   	<div class='card-footer'>
+							   		Posted 
+							   		{% if comment.user %}
+							   			By {{comment.user}}
+							   		{% else %}
+							   			Anonymously
+							   		{% endif %}
+							   	</div>
 						   	</div>
 					    </li>	
+					    
 				{% endfor %}
+				<li>
+					INSERT COMMENT HERE
+				</li>
 			</ul>
 		</div>
 	</div>

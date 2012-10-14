@@ -9,14 +9,14 @@
 	<div class='card-list'>
 		{% for post in latest_post_list %}
 			<div class='row'>
-				<div class='span10 offset1 card'>
+				<div class='span8 offset2 card'>
 					<div class="card-title">
 						<h2>
 							<a href="/blog/{{ post.id }}/">{{ post.subject }}</a>
 						</h2>	
 					</div>
 					<div class="card-content">
-						<p>{{ post.article|safe|escape}}</p>
+						<p>{{ post.article|safe|escape|truncatewords_html:300}}</p>
 					</div>
 					<div class="card-footer pull-right">
 						{% if post.comment_set.all|length > 0 %}
