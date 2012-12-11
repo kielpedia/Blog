@@ -1,24 +1,6 @@
 
-.card-list {
-}
-
 .card {
 	padding: 1em;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-                border-radius: 5px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-
-.card-title {
-}
-
-.card-content {
-
 }
 
 .card-footer {
@@ -34,3 +16,19 @@
 .card-title a:hover,.card-footer a:hover {
 	color: #949499;
 }
+
+.article-title a,.article-footer a {
+    text-decoration: none;
+	color: #343437;
+}
+
+
+.article-title a:hover,.article-footer a:hover {
+	color: #949499;
+}
+
+.blog-feed ul{
+    margin-left: 0;
+}
+
+
