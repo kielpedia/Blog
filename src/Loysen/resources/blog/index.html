@@ -8,8 +8,8 @@
 <div class='blog'>
 	<div class='card-list'>
 		{% for post in latest_post_list %}
-			<div class='row'>
-				<div class='span8 offset2 card'>
+			<div class='row-fluid'>
+				<div class='span9 card'>
 					<div class="card-title">
 						<h2>
 							<a href="/blog/{{ post.id }}/">{{ post.subject }}</a>
@@ -26,6 +26,11 @@
 						{% endif %}
 					</div>
 				</div>
+                <div class='span3'>
+                    <div class='well sidebar-nav'>
+                        
+                    </div>
+                </div>
 			</div>	
 		{% endfor %}
 	</div>

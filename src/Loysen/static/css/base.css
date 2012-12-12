@@ -1,10 +1,7 @@
 
 body {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
+        background-color: #fff;
 }
-
 
 ul {
 	list-style: none;
@@ -12,6 +9,11 @@ ul {
 
 li {
 	margin-left: 0;
+}
+
+.center-horizontal {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .text-center {
@@ -25,5 +27,19 @@ li {
 .text-left {
 	text-align: left;
 }
+
+footer {
+    border-top: 1px solid #EEE;
+    margin: 50px 0 0px;
+    padding-bottom: 15px;
+}
+
+footer > p{
+    margin: 30px 0 0px;
+    font-size: 12px;
+    color: #999;
+}
+
+
 
 
