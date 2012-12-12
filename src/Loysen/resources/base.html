@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{% block title %}Default Title{% endblock %}</title>
+        <title>Kiel Loysen</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -38,12 +38,12 @@
 						<span class='icon-bar'></span>
 						<span class='icon-bar'></span>
 					</a>
-					<a class='brand' href='#'>Kiel Loysen</a>
+					<a class='brand' href='#'>kielpedia</a>
 					<div class='nav-collapse collapse'>
 						<ul class='nav'>
 							<li><a href='/'>Home</a></li>
 							<li><a href='/about'>About</a></li>
-							<li><a href='/blog'>Blog</a></li>
+							<li><a href='/blog/'>Blog</a></li>
 						</ul>
 					</div>
 				</div>
@@ -59,7 +59,7 @@
 			{% endblock %}
             <footer>
                 <div class='pull-right'>
-                	    <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
+                	    <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
 		            </div>
                 <p class='text-center'>
                     Kiel Loysen
@@ -72,6 +72,12 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.8.2.min.js"><\/script>')</script>
 		<script src="/static/js/libs/bootstrap.min.js"></script>
+        
+        <script type='text/javascript'>
+            $(function(){
+                $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+            });
+        </script>
 
 	</body>
 </html>
