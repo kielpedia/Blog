@@ -3,18 +3,22 @@
 	padding: 1em;
 }
 
+.card-title {
+    color:#14A1F0;
+}
+
 .card-footer {
 	font-size: 8pt;
 }
 
 .card-title a,.card-footer a {
 	text-decoration: none;
-	color: #343437;
+
 }
 
 
 .card-title a:hover,.card-footer a:hover {
-	color: #949499;
+	color: #51BAF5;
 }
 
 .article-title a,.article-footer a {

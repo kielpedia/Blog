@@ -1,6 +1,6 @@
 
 body {
-        background-color: #fff;
+    background-color: #fff;
 }
 
 ul {
@@ -39,6 +39,11 @@ footer > p{
     font-size: 12px;
     color: #999;
 }
+
+.container-fluid .hero-unit{
+    padding: 20px;
+}
+
 
 
 
