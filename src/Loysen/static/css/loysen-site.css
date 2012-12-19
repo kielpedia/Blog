@@ -42,8 +42,16 @@ body {
 	color: #949499;
 }
 
-.blog-feed ul{
+.blog-feed,.sidebar-about-text ul{
     margin-left: 0;
+}
+
+.sidebar-about-text{
+    font-size: .7em;
+}
+
+.sidebar-footer-text {
+    font-size: .9em;
 }
 
 

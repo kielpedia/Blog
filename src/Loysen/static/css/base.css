@@ -27,12 +27,12 @@ li {
 
 footer {
     border-top: 1px solid #EEE;
-    margin: 50px 0 0px;
+    margin: 50px 0 0;
     padding-bottom: 15px;
 }
 
 footer > p{
-    margin: 30px 0 0px;
+    margin: 30px 0 0;
     font-size: 12px;
     color: #999;
 }

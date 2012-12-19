@@ -1,44 +1,27 @@
-{% extends 'base.html' %}
+{% extends 'blog/base.html' %}
 
-{% block styles %}
-	<link rel='stylesheet' type='text/css' href='/static/css/blog.css' />	
-{% endblock styles %}
-{% block hero %}
-<img src="http://placehold.it/1200x150">
-{% endblock hero %}
-{% block content %}
-{% if latest_post_list %}
-<div class='blog'>
-	<div class='card-list'>
-		{% for post in latest_post_list %}
-			<div class='row-fluid'>
-				<div class='span9 card'>
-					<div class="card-title">
-						<h2>
-							<a href="/blog/{{ post.id }}/">{{ post.subject }}</a>
-						</h2>	
-					</div>
-					<div class="card-content">
-						<p>{{ post.article|safe|escape|truncatewords_html:300}}</p>
-					</div>
-					<div class="card-footer pull-right">
-						{% if post.comment_set.all|length > 0 %}
-						<a href="/blog/{{ post.id }}/" >Comments: {{post.comment_set.all|length}}</a>
-						{% else %}
-						<a href="/blog/{{ post.id }}/" >Make a comment</a>
-						{% endif %}
-					</div>
-				</div>
-                <div class='span3'>
-                    <div class='well sidebar-nav'>
-                        
-                    </div>
-                </div>
-			</div>	
-		{% endfor %}
-	</div>
+{% block post-view %}
+    {% if latest_post_list %}
+    <div class='card-list'>
+        {% for post in latest_post_list %}
+            <div class='card'>
+            	<div class="card-title">
+            		<h2>
+            			<a href="/blog/{{ post.id }}/">{{ post.subject }}</a>
+            		</h2>	
+            	</div>
+            	<div class="card-content">
+            		<p>{{ post.article|safe|escape|truncatewords_html:300}}</p>
+            	</div>
+            	<div class="card-footer pull-right">
+            		{% if post.comment_set.all|length > 0 %}
+            		<a href="/blog/{{ post.id }}/" >Comments: {{post.comment_set.all|length}}</a>
+            		{% else %}
+            		<a href="/blog/{{ post.id }}/" >Make a comment</a>
+            		{% endif %}
+            	</div>
+            </div>
+        {% endfor %}
 </div>
-{% else %}
-<p>No post are available.</p>
-{% endif %}
-{% endblock content %}
+    {% endif %}
+{% endblock post-view %}

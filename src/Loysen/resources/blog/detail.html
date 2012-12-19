@@ -1,14 +1,7 @@
-{% extends "base.html" %}
+{% extends "blog/base.html" %}
 
-{% block styles %}
-	<link rel='stylesheet' type='text/css' href='/static/css/blog.css' />	
-{% endblock styles %}
-{% block hero %}
-<img src="http://placehold.it/1200x150">
-{% endblock hero %}
-{% block content %}
-<div class='blog row-fluid'>
-	<div class='card span9 '>
+{% block post-view %}
+	<div class='card '>
 		<div class="card-title">
 			<h1>{{ post.subject }}</h1>
 		</div>
@@ -51,10 +44,4 @@
 			</ul>
 		</div>
 	</div>
-    <div class='span3'>
-        <div class='well sidebar-nav'>
-                        
-        </div>
-    </div>
-</div>
-{% endblock content %}
+{% endblock post-view %}
