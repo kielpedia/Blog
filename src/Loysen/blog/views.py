@@ -4,7 +4,28 @@ Created on Aug 10, 2011
 @author: kiel
 '''
 from Loysen.blog.models import Post
+from Loysen.blog.serializers import PostSerializer
 from django.views.generic import TemplateView
+from rest_framework import generics
+from rest_framework.decorators import api_view
+from rest_framework.reverse import reverse
+from rest_framework.response import Response
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    """
+    The entry endpoint of our API.
+    """
+    return Response({
+        'posts': reverse('post-list', request=request),
+    })
+    
+class PostList(generics.ListCreateAPIView):
+    """
+    API endpoint that represents a list of users.
+    """
+    model = Post
+    serializer_class = PostSerializer
 
 class BlogView(TemplateView):
     template_name = "blog/index.html"

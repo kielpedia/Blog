@@ -16,7 +16,7 @@
 			<ul class='card-list'>
 				{% for comment in post.comment_set.all %}
 					{% if not forloop.first %}
-						<hr align='center' width='10%' size='1'>
+						<hr class='center-horizontal' width='60%' size='1'>
 					{% endif %}
 					   <li >
 					    	<div class='card'>
@@ -39,7 +39,17 @@
 					    
 				{% endfor %}
 				<li>
-					INSERT COMMENT HERE
+					<form>
+                      <fieldset>
+                        <label>Subject</label>
+                        <input type="text" placeholder="Subject…">
+                        <label>Name</label>
+                        <input type="text" placeholder="Name…">
+                        <label>Comment</label>
+                        <textarea rows="3"></textarea>
+                        <button type="submit" class="btn">Submit</button>
+                      </fieldset>
+                    </form>
 				</li>
 			</ul>
 		</div>
