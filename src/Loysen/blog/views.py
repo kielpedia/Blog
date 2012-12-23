@@ -3,8 +3,8 @@ Created on Aug 10, 2011
 
 @author: kiel
 '''
-from Loysen.blog.models import Post
-from Loysen.blog.serializers import PostSerializer
+from Loysen.blog.models import Post, Comment
+from Loysen.blog.serializers import PostSerializer, CommentSerializer
 from django.views.generic import TemplateView
 from rest_framework import generics
 from rest_framework.decorators import api_view
@@ -26,6 +26,28 @@ class PostList(generics.ListCreateAPIView):
     """
     model = Post
     serializer_class = PostSerializer
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API endpoint that represents a list of users.
+    """
+    model = Post
+    serializer_class = PostSerializer
+
+class PostCommentList(generics.ListCreateAPIView):
+    """
+    API endpoint that represents a list of users.
+    """
+    model = Comment
+    serializer_class = CommentSerializer
+
+class PostCommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API endpoint that represents a list of users.
+    """
+    model = Comment
+    serializer_class = CommentSerializer
+    pk_url_kwarg = 'comment_id'
 
 class BlogView(TemplateView):
     template_name = "blog/index.html"

@@ -3,12 +3,9 @@ Created on Aug 13, 2011
 
 @author: kiel
 '''
-from django.conf.urls.defaults import patterns, include, url
-from django.conf.urls.defaults import patterns
+from django.conf.urls import patterns, include, url
 from rest_framework.urlpatterns import format_suffix_patterns
-from django.views.generic import ListView, DetailView
-from Loysen.blog.views import BlogView, BlogPostView, PostList
-from Loysen.blog.models import Post
+from Loysen.blog.views import BlogView, BlogPostView, PostList, PostDetail, PostCommentList, PostCommentDetail
 
 
 urlpatterns = patterns('blog.views',
@@ -18,6 +15,9 @@ urlpatterns = patterns('blog.views',
         BlogPostView.as_view()),
     url(r'^api/$', 'api_root'),
     url(r'^api/posts/$', PostList.as_view(), name='post-list'),
+    url(r'^api/posts/(?P<pk>\d+)/$', PostDetail.as_view(), name='post-detail'),
+    url(r'^api/posts/(?P<pk>\d+)/comments/$', PostCommentList.as_view(), name='comment-list'),
+    url(r'^api/posts/(?P<pk>\d+)/comments/(?P<comment_id>\d+)/$', PostCommentDetail.as_view(), name='comment-detail'),
 )
 
 # Format suffixes

@@ -30,5 +30,8 @@ class Comment(models.Model):
     pub_date = models.DateTimeField('date published')
     up_vote = models.IntegerField(null = True, blank = True)
     down_vote = models.IntegerField(null = True, blank = True)
+
+    def __unicode__(self):
+        return self.subject
     
     
