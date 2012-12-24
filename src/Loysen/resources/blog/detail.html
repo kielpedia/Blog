@@ -42,12 +42,12 @@
 					<form>
                       <fieldset>
                         <label>Subject</label>
-                        <input type="text" placeholder="Subject…">
+                        <input id="comment-subject" type="text" placeholder="Subject…">
                         <label>Name</label>
-                        <input type="text" placeholder="Name…">
+                        <input id="username" type="text" placeholder="Name…">
                         <label>Comment</label>
-                        <textarea rows="3"></textarea>
-                        <button type="submit" class="btn">Submit</button>
+                        <textarea id="comment-text" rows="3"></textarea>
+                        <button id="comment-submit" type="submit" class="btn">Submit</button>
                       </fieldset>
                     </form>
 				</li>
@@ -55,3 +55,35 @@
 		</div>
 	</div>
 {% endblock post-view %}
+{% block scripts %}
+    <script type='text/javascript'>
+        $(function(){
+            $('#comment-submit').click(function(){
+                var subject = $('#comment-subject').val();
+                var text = $('#comment-text').val();
+                var username = $('#username').val();
+
+                var comment = {
+                    subject: subject,
+                    text: text,
+                    user_name: username,
+                    post: {{ post.id }}
+                };
+
+                $.ajax({
+                   type: 'POST',
+                   url: '/blog/api/posts/{{ post.id }}/comments/',
+                   dataType: 'json',
+                   contentType: 'application/json',
+                   data: JSON.stringify(comment),
+                   success: function(){
+                       location.reload(true);
+                   }
+                });
+
+
+                return false;
+            });
+        });
+    </script>
+{% endblock scripts %}

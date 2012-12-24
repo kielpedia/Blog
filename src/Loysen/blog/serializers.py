@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
-    comments = serializers.ManyHyperlinkedRelatedField(source='comment_set', view_name='comment-list')
+    comments = serializers.ManyHyperlinkedRelatedField(source='comment_set', view_name='comment-list', read_only=True)
 
     class Meta:
         model = Post
@@ -11,6 +11,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
 
+
     class Meta:
         model = Comment
-        fields = ('subject', 'text', 'pub_date')
+        read_only_fields = {'pub_date'}

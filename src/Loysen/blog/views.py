@@ -20,7 +20,7 @@ def api_root(request, format=None):
         'posts': reverse('post-list', request=request),
     })
     
-class PostList(generics.ListCreateAPIView):
+class PostList(generics.ListAPIView):
     """
     API endpoint that represents a list of users.
     """
@@ -41,6 +41,15 @@ class PostCommentList(generics.ListCreateAPIView):
     model = Comment
     serializer_class = CommentSerializer
 
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases
+        for the currently authenticated user.
+        """
+        post_id = self.kwargs['pk']
+        return Comment.objects.filter(post=post_id)
+
+
 class PostCommentDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     API endpoint that represents a list of users.
@@ -48,6 +57,8 @@ class PostCommentDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Comment
     serializer_class = CommentSerializer
     pk_url_kwarg = 'comment_id'
+
+
 
 class BlogView(TemplateView):
     template_name = "blog/index.html"
