@@ -2,3 +2,4 @@ venv
 *.pyc
 .idea/*
 *.db
+local_settings.py

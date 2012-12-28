@@ -2,27 +2,9 @@
 
 import os
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
 
-MANAGERS = ADMINS
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '%s/../sqlite.db' % BASE_PATH, # Or path to database file if using sqlite3.
-        'USER': '', # Not used with sqlite3.
-        'PASSWORD': '', # Not used with sqlite3.
-        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '', # Set to empty string for default. Not used with sqlite3.
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -79,8 +61,7 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'a9wtb^j9pata$rq6&y_ep((gny0-#$uqvdjnu#y=*_x794-6g7'
+
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -148,3 +129,9 @@ LOGGING = {
         },
     }
 }
+
+
+try :
+    from local_settings import *
+except ImportError:
+    pass
