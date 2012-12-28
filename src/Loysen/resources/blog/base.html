@@ -1,56 +1,64 @@
 {% extends 'base.html' %}
 
 {% block styles %}
-    <link rel='stylesheet' type='text/css' href='/static/css/blog.css' />	
+    <link rel='stylesheet' type='text/css' href='/static/css/blog.css'/>
 {% endblock styles %}
 {% block hero %}
-<img src="http://placehold.it/1200x150">
+    <img src="http://placehold.it/1200x150">
 {% endblock hero %}
 {% block content %}
-<div class='blog'>
-    <div class='row-fluid'>
+    <div class='blog'>
+        <div class='row-fluid'>
 
-        <div class='span9'>
-    		{% block post-view %}
-    		{% endblock %}
-    	</div>
-        <div class='span3'>
-            <div class='well sidebar-nav'>
-            <h5>About</h5>
-            <div class='row-fluid'>
-                <div class='span7 sidebar-about-text'>
-                    <span>Naflk'yarnak uh'e hai throd nnnHastur ph'syha'h s'uhn naAzathoth llll naathg, vulgtm vulgtlagln shogg ftaghu uaaah chtenff ph'y'hah ph'hupadgh. </span>
-                </div>
-                <div class='span4 pull-right'>
-                    <img src="http://placehold.it/78x78">
-                    <div class='center-horizontal'>
-                        <a href="http://facebook.com/kielpedia"><i class='icon-user'></i></a>
-                        <a href="http://plus.google.com/kielpedia"><i class='icon-user'></i></a>
-                        <a href="http://twitter.com/kielpedia"><i class='icon-user'></i></a>
+            <div class='span9'>
+                {% block post-view %}
+                {% endblock %}
+            </div>
+            <div class='span3'>
+                <div class='well sidebar-nav'>
+                    <h5>About</h5>
+
+                    <div class='row-fluid'>
+                        <div class='span7 sidebar-about-text'>
+                            <span>Naflk'yarnak uh'e hai throd nnnHastur ph'syha'h s'uhn naAzathoth llll naathg, vulgtm vulgtlagln shogg ftaghu uaaah chtenff ph'y'hah ph'hupadgh. </span>
+                        </div>
+                        <div class='span5 pull-right'>
+                            <img src="http://placehold.it/90x90">
+                            <div class='center-horizontal' style='width:68px'>
+                                <a href="http://facebook.com/kielpedia"><img src="/static/img/f_logo.png"
+                                                                             class='social-icon-small '></a>
+                                <a href="https://plus.google.com/110734849241544173448?prsrc=3" rel="publisher"
+                                   style="text-decoration:none;">
+                                    <img src="//ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+"
+                                         class='social-icon-small '/></a>
+                                <a href="http://twitter.com/kielpedia"><img
+                                        src="https://twitter.com/images/resources/twitter-bird-white-on-blue.png"
+                                        class='social-icon-small '></a>
+                            </div>
+                        </div>
                     </div>
-                    
+
+
+                    <br>
+
+                    <h5>Recent Posts</h5>
+
+                    <div class='row-fluid'>
+                        <div class='span12 sidebar-about-text'>
+                            <ul>
+                                {% for post in latest_post_list %}
+                                    <li>
+                                        <a href="/blog/{{ post.id }}/">{{ post.subject }}</a><br>
+                                        <span>{{ post.pub_date|date:"SHORT_DATE_FORMAT" }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
-            
-            <br><br>
-            
-            <h5>Recent Posts</h5>
-            <div class='row-fluid'>
-                <div class='span12 sidebar-about-text'>
-                    <ul>
-                        {% for post in latest_post_list %}
-                            <li>
-                        		<a href="/blog/{{ post.id }}/">{{ post.subject }}</a><br>
-                    			<span>{{post.pub_date|date:"SHORT_DATE_FORMAT" }}</span>
-                            </li>
-                        {% endfor %}     
-                    </ul>
-                </div>
-     								
-
-            </div>    
-        </div>
         </div>
     </div>
-</div>
 {% endblock content %}
