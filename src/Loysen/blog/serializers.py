@@ -14,4 +14,5 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
+        exclude = {'subject',}
         read_only_fields = {'pub_date'}

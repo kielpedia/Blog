@@ -1,84 +1,77 @@
 {% extends "blog/base.html" %}
 
 {% block post-view %}
-	<div class='card '>
-		<div class="card-title">
-			<h1>{{ post.subject }}</h1>
-		</div>
+    <div class='card '>
+        <div>
+            <h1>{{ post.subject }}</h1>
+        </div>
 
-		<div class="card-content">
-			{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-			
-			{{ post.article|safe }}
-		</div>
-		<div class='comment'>
-			<h4>Comments</h4>
-			<ul class='card-list'>
-				{% for comment in post.comment_set.all %}
-					{% if not forloop.first %}
-						<hr class='center-horizontal' width='60%' size='1'>
-					{% endif %}
-					   <li >
-					    	<div class='card'>
-							   	<div class="card-title">
-							   		<h5>{{comment.subject}}</h5>
-							   	</div>
-							   	<div class="card-content">
-									{{comment.text|safe|escape}}
-							   	</div>
-							   	<div class='card-footer'>
-							   		Posted 
-							   		{% if comment.user %}
-							   			By {{comment.user}}
-							   		{% else %}
-							   			Anonymously
-							   		{% endif %}
-							   	</div>
-						   	</div>
-					    </li>	
-					    
-				{% endfor %}
-				<li>
-					<form>
-                      <fieldset>
-                        <label>Subject</label>
-                        <input id="comment-subject" type="text" placeholder="Subject…">
-                        <label>Name</label>
-                        <input id="username" type="text" placeholder="Name…">
-                        <label>Comment</label>
-                        <textarea id="comment-text" rows="3"></textarea>
-                        <button id="comment-submit" type="submit" class="btn">Submit</button>
-                      </fieldset>
-                    </form>
-				</li>
-			</ul>
-		</div>
-	</div>
+        <div class="card-content">
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+            {{ post.article|safe }}
+        </div>
+        <h4>Add New Comment</h4>
+
+        <div class='row-fluid'>
+            <form class='offset1'>
+                <fieldset>
+                    <input id="username" type="text" placeholder="Name..." class='input-xlarge'>
+                    <textarea id="comment-text" rows="3" class='input-block-level' placeholder="Comment..."></textarea>
+                    <button id="comment-submit" type="submit" class="btn pull-right">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+        <h4>Comments</h4>
+
+        <div class='row-fluid'>
+            <div class='offset1'>
+                {% for comment in post.comment_set.all %}
+                    {% if not forloop.first %}
+                        <hr class='center-horizontal ' width='60%' size='1'>
+                    {% endif %}
+                    <div class="card-content">
+                        {{ comment.text|safe|escape }}
+                    </div>
+                    <div class='card-footer'>
+                        Posted
+                        {% if comment.user_name %}
+                            By {{ comment.user_name }}
+                        {% else %}
+                            Anonymously
+                        {% endif %}
+                        on {{comment.pub_date }}
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock post-view %}
 {% block scripts %}
     <script type='text/javascript'>
-        $(function(){
-            $('#comment-submit').click(function(){
+        $(function () {
+            $('#comment-submit').click(function () {
                 var subject = $('#comment-subject').val();
                 var text = $('#comment-text').val();
                 var username = $('#username').val();
 
                 var comment = {
-                    subject: subject,
-                    text: text,
-                    user_name: username,
+                    subject:subject,
+                    text:text,
+                    user_name:username,
                     post: {{ post.id }}
                 };
 
                 $.ajax({
-                   type: 'POST',
-                   url: '/blog/api/posts/{{ post.id }}/comments/',
-                   dataType: 'json',
-                   contentType: 'application/json',
-                   data: JSON.stringify(comment),
-                   success: function(){
-                       location.reload(true);
-                   }
+                    type:'POST',
+                    url:'/blog/api/posts/{{ post.id }}/comments/',
+                    dataType:'json',
+                    contentType:'application/json',
+                    data:JSON.stringify(comment),
+                    success:function (data) {
+                        location.reload(true);
+                    }
                 });
 
 

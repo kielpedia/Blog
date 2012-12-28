@@ -12,7 +12,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post)
     user_name = models.CharField(max_length=30, blank=True)
     text = models.TextField()
-    subject = models.CharField(max_length = 100)
+    subject = models.CharField(max_length = 100, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):

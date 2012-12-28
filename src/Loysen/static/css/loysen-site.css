@@ -14,6 +14,10 @@ body {
 	padding: 1em;
 }
 
+h1, h2, h3, h4 {
+    color:#14A1F0;
+}
+
 .card-title {
     color:#14A1F0;
 }
