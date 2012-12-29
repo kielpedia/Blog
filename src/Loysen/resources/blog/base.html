@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block styles %}
-    <link rel='stylesheet' type='text/css' href='/static/css/blog.css'/>
+    <link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}css/blog.css'/>
 {% endblock styles %}
 {% block hero %}
     <img src="http://placehold.it/1200x150">
@@ -25,7 +25,7 @@
                         <div class='span5 pull-right'>
                             <img src="http://placehold.it/90x90">
                             <div class='center-horizontal' style='width:68px'>
-                                <a href="http://facebook.com/kielpedia"><img src="/static/img/f_logo.png"
+                                <a href="http://facebook.com/kielpedia"><img src="{{ STATIC_URL }}img/f_logo.png"
                                                                              class='social-icon-small '></a>
                                 <a href="https://plus.google.com/110734849241544173448?prsrc=3" rel="publisher"
                                    style="text-decoration:none;">
