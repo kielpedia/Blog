@@ -96,6 +96,7 @@ INSTALLED_APPS = (
     'blog',
     'rest_framework',
     'django.contrib.admin',
+    'gunicorn',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

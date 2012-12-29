@@ -1,1 +1,1 @@
-web: python src/Loysen/manage.py runserver 0.0.0.0:$PORT --noreload
+web: python src/Loysen/manage.py run_gunicorn 0.0.0.0:$PORT 
