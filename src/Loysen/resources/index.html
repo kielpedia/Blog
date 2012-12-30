@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block hero %}
-<img src="http://placehold.it/1200x150">
+<img src="{{ STATIC_URL }}img/collage-banner.jpg" >
 {% endblock hero %}
 
 {% block content %}
@@ -10,9 +10,8 @@
         <div class='span12'>
             <div class='row-fluid'>
         		<div class='span5 card'>
-        			<h3 class='card-title text-center'>
-        				<a href="/about" >About Me</a>
-        			</h3>
+
+        				<a href="/about" class='card-title text-center'><h3 class=''>About Me</h3></a>
         			<p class='card-content'>
         			Ut quis mauris sed eros pulvinar consequat et id leo. Ut quis condimentum lectus. Donec mattis dui non tellus dapibus pellentesque. Maecenas aliquet ultricies nisl quis lacinia. Cras purus dolor, ultricies id laoreet ac, fringilla ut tellus.<br><br>
         			Mauris tincidunt fringilla purus facilisis consectetur. Nullam bibendum lectus quis sapien egestas bibendum. Aenean augue erat, lobortis non laoreet eget, tempus vitae dui. Curabitur vitae risus elit. Nunc blandit interdum interdum. Nulla ut nulla neque. Aenean convallis lobortis metus, ac tincidunt felis lobortis eu.
