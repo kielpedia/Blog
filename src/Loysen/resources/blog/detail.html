@@ -13,8 +13,8 @@
         </div>
         <h4>Add New Comment</h4>
 
-        <div class='row-fluid'>
-            <form class='offset1'>
+        <div class='row-fluid new-comment-form'>
+            <form>
                 <fieldset>
                     <input id="username" type="text" placeholder="Name..." class='input-xlarge'>
                     <textarea id="comment-text" rows="3" class='input-block-level' placeholder="Comment..."></textarea>
@@ -22,30 +22,36 @@
                 </fieldset>
             </form>
         </div>
-        <h4>Comments</h4>
 
-        <div class='row-fluid'>
-            <div class='offset1'>
-                {% for comment in post.comment_set.all %}
-                    {% if not forloop.first %}
-                        <hr class='center-horizontal ' width='60%' size='1'>
-                    {% endif %}
+        {% if post.comment_set %}
+            <h4>Comments</h4>
+        {% endif %}
+
+        {% for comment in post.comment_set.all %}
+            {% if not forloop.first %}
+                <hr class='center-horizontal ' width='60%' size='1'>
+            {% endif %}
+            <div class='row-fluid'>
+                <div class='span2'>
+                    <img src='http://www.gravatar.com/avatar/279c4f0b92358d7969fd43cc341c4307.png' >
+                </div>
+                <div class='span10 '>
                     <div class="card-content">
+                        <p>
                         {{ comment.text|safe|escape }}
-                    </div>
-                    <div class='card-footer'>
-                        Posted
-                        {% if comment.user_name %}
-                            By {{ comment.user_name }}
-                        {% else %}
-                            Anonymously
-                        {% endif %}
-                        on {{comment.pub_date }}
+                        </p>
                     </div>
 
-                {% endfor %}
+                </div>
             </div>
-        </div>
+            <div class='card-footer pull-right'>
+
+                {% if comment.user_name %}
+                    {{ comment.user_name }}
+                {% endif %}
+                on {{ comment.pub_date }}
+            </div>
+        {% endfor %}
     </div>
 {% endblock post-view %}
 {% block scripts %}
